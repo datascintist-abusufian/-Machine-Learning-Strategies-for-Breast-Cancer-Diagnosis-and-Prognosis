@@ -1,0 +1,201 @@
+Patient_ID,Age,Gender,Residence,Diagnostic_Method,Time_to_Diagnosis_days,Diagnostic_Accuracy,Patient_Satisfaction
+1,69,Female,Urban,ML Model,7,Accurate,5
+2,25,Female,Urban,ML Model,5,Accurate,3
+3,28,Female,Urban,ML Model,1,Inaccurate,5
+4,28,Male,Rural,Traditional,9,Inaccurate,5
+5,64,Female,Urban,Traditional,11,Inaccurate,4
+6,34,Female,Urban,ML Model,6,Inaccurate,4
+7,44,Male,Urban,ML Model,6,Inaccurate,5
+8,46,Male,Urban,Traditional,6,Accurate,4
+9,61,Male,Urban,Traditional,12,Inaccurate,3
+10,48,Male,Urban,Traditional,2,Accurate,5
+11,31,Female,Rural,ML Model,1,Accurate,5
+12,49,Male,Rural,ML Model,1,Inaccurate,2
+13,49,Female,Rural,Traditional,1,Accurate,2
+14,37,Female,Rural,ML Model,1,Inaccurate,2
+15,26,Female,Urban,Traditional,11,Accurate,2
+16,63,Female,Urban,ML Model,13,Accurate,1
+17,64,Male,Urban,Traditional,14,Accurate,2
+18,48,Male,Rural,ML Model,1,Inaccurate,3
+19,49,Male,Urban,ML Model,14,Inaccurate,1
+20,42,Female,Urban,ML Model,11,Inaccurate,3
+21,62,Male,Urban,ML Model,8,Inaccurate,2
+22,50,Female,Urban,Traditional,7,Accurate,5
+23,38,Female,Rural,Traditional,4,Inaccurate,1
+24,33,Male,Rural,Traditional,6,Inaccurate,5
+25,34,Male,Rural,ML Model,5,Accurate,3
+26,45,Male,Urban,ML Model,4,Accurate,3
+27,41,Male,Urban,ML Model,5,Inaccurate,1
+28,30,Male,Urban,ML Model,6,Accurate,3
+29,40,Male,Urban,Traditional,13,Inaccurate,1
+30,25,Female,Rural,Traditional,13,Accurate,3
+31,43,Female,Rural,Traditional,11,Inaccurate,5
+32,60,Male,Urban,Traditional,2,Accurate,4
+33,49,Male,Rural,Traditional,4,Inaccurate,2
+34,54,Male,Urban,Traditional,13,Accurate,2
+35,44,Male,Rural,ML Model,7,Inaccurate,4
+36,44,Male,Rural,ML Model,8,Inaccurate,4
+37,39,Male,Rural,Traditional,5,Inaccurate,1
+38,64,Male,Rural,ML Model,1,Inaccurate,3
+39,57,Male,Rural,Traditional,14,Inaccurate,5
+40,26,Male,Urban,Traditional,1,Inaccurate,2
+41,34,Male,Rural,ML Model,8,Accurate,4
+42,57,Female,Rural,Traditional,11,Inaccurate,4
+43,56,Female,Urban,ML Model,13,Accurate,4
+44,35,Female,Urban,Traditional,4,Inaccurate,3
+45,48,Female,Urban,Traditional,14,Accurate,5
+46,60,Male,Rural,Traditional,4,Inaccurate,4
+47,36,Male,Urban,Traditional,1,Accurate,5
+48,53,Male,Urban,ML Model,1,Inaccurate,2
+49,59,Female,Rural,Traditional,10,Accurate,1
+50,25,Male,Urban,Traditional,5,Inaccurate,1
+51,25,Male,Urban,ML Model,5,Accurate,2
+52,61,Male,Rural,ML Model,6,Accurate,1
+53,30,Male,Urban,Traditional,9,Accurate,4
+54,63,Male,Urban,Traditional,9,Inaccurate,3
+55,65,Male,Urban,ML Model,1,Accurate,1
+56,42,Male,Urban,Traditional,2,Inaccurate,2
+57,40,Female,Rural,ML Model,6,Inaccurate,3
+58,29,Female,Rural,Traditional,10,Inaccurate,2
+59,66,Female,Rural,ML Model,10,Inaccurate,4
+60,67,Female,Rural,Traditional,13,Accurate,2
+61,56,Male,Rural,ML Model,7,Inaccurate,4
+62,26,Male,Urban,ML Model,2,Accurate,1
+63,26,Female,Urban,ML Model,5,Inaccurate,3
+64,64,Male,Urban,Traditional,1,Accurate,5
+65,66,Female,Urban,ML Model,5,Inaccurate,3
+66,60,Female,Urban,Traditional,8,Inaccurate,5
+67,63,Male,Urban,ML Model,8,Accurate,1
+68,36,Female,Rural,ML Model,12,Inaccurate,2
+69,43,Male,Urban,Traditional,8,Inaccurate,4
+70,52,Female,Rural,Traditional,14,Inaccurate,4
+71,25,Male,Urban,Traditional,7,Inaccurate,4
+72,39,Female,Urban,ML Model,3,Inaccurate,1
+73,60,Female,Urban,ML Model,7,Inaccurate,1
+74,37,Female,Rural,Traditional,1,Inaccurate,5
+75,67,Female,Urban,Traditional,12,Inaccurate,3
+76,45,Male,Urban,Traditional,3,Accurate,3
+77,36,Male,Urban,Traditional,12,Inaccurate,2
+78,29,Male,Rural,Traditional,8,Accurate,5
+79,31,Female,Rural,Traditional,8,Inaccurate,1
+80,29,Male,Urban,ML Model,11,Accurate,1
+81,28,Female,Urban,Traditional,3,Accurate,4
+82,37,Male,Urban,Traditional,7,Accurate,5
+83,61,Female,Urban,Traditional,2,Inaccurate,5
+84,65,Female,Urban,Traditional,4,Inaccurate,1
+85,39,Female,Urban,ML Model,8,Accurate,5
+86,40,Female,Rural,Traditional,14,Inaccurate,4
+87,45,Male,Rural,Traditional,12,Inaccurate,4
+88,60,Male,Urban,Traditional,1,Accurate,1
+89,48,Male,Urban,ML Model,6,Inaccurate,1
+90,40,Female,Urban,ML Model,5,Accurate,5
+91,38,Male,Rural,Traditional,6,Accurate,5
+92,46,Female,Urban,ML Model,14,Inaccurate,3
+93,30,Female,Rural,Traditional,6,Accurate,5
+94,66,Male,Rural,Traditional,4,Inaccurate,5
+95,60,Male,Rural,Traditional,12,Inaccurate,2
+96,25,Male,Urban,ML Model,9,Inaccurate,1
+97,56,Female,Urban,Traditional,1,Inaccurate,5
+98,30,Male,Urban,Traditional,2,Accurate,2
+99,55,Male,Urban,Traditional,6,Inaccurate,5
+100,25,Female,Urban,ML Model,13,Inaccurate,1
+101,61,Male,Urban,ML Model,5,Inaccurate,3
+102,59,Female,Urban,ML Model,2,Accurate,4
+103,54,Male,Urban,Traditional,14,Accurate,1
+104,28,Male,Rural,Traditional,14,Inaccurate,1
+105,59,Female,Urban,ML Model,6,Inaccurate,2
+106,67,Female,Urban,Traditional,1,Inaccurate,2
+107,38,Male,Urban,ML Model,7,Inaccurate,2
+108,64,Male,Urban,ML Model,9,Inaccurate,3
+109,46,Female,Rural,Traditional,9,Accurate,2
+110,34,Male,Rural,Traditional,7,Inaccurate,1
+111,25,Male,Urban,Traditional,4,Accurate,2
+112,35,Male,Urban,Traditional,5,Accurate,5
+113,68,Male,Urban,Traditional,5,Inaccurate,5
+114,48,Male,Urban,Traditional,11,Accurate,4
+115,27,Male,Rural,Traditional,11,Inaccurate,5
+116,59,Female,Urban,Traditional,12,Accurate,4
+117,60,Female,Urban,ML Model,4,Accurate,5
+118,55,Male,Urban,Traditional,7,Inaccurate,3
+119,28,Female,Rural,ML Model,13,Accurate,4
+120,43,Male,Urban,Traditional,6,Inaccurate,5
+121,60,Female,Rural,ML Model,11,Inaccurate,4
+122,45,Female,Urban,Traditional,14,Inaccurate,4
+123,42,Male,Urban,Traditional,10,Inaccurate,5
+124,52,Male,Rural,Traditional,9,Inaccurate,1
+125,39,Male,Urban,ML Model,13,Inaccurate,2
+126,66,Male,Rural,Traditional,2,Accurate,4
+127,26,Male,Urban,ML Model,4,Accurate,4
+128,61,Female,Rural,ML Model,9,Inaccurate,4
+129,35,Male,Rural,Traditional,12,Accurate,2
+130,47,Male,Rural,Traditional,11,Accurate,4
+131,68,Male,Urban,Traditional,14,Inaccurate,4
+132,65,Female,Rural,ML Model,2,Accurate,5
+133,36,Female,Rural,Traditional,6,Inaccurate,1
+134,27,Male,Urban,ML Model,9,Inaccurate,3
+135,41,Male,Urban,ML Model,1,Accurate,3
+136,57,Female,Rural,ML Model,4,Inaccurate,2
+137,25,Male,Rural,Traditional,8,Inaccurate,3
+138,63,Male,Urban,ML Model,14,Inaccurate,1
+139,44,Male,Urban,Traditional,13,Inaccurate,3
+140,67,Female,Rural,Traditional,2,Accurate,1
+141,65,Female,Urban,Traditional,8,Inaccurate,1
+142,38,Female,Rural,Traditional,9,Accurate,5
+143,55,Male,Urban,Traditional,1,Inaccurate,3
+144,49,Female,Rural,ML Model,8,Accurate,4
+145,27,Female,Rural,Traditional,6,Accurate,2
+146,28,Female,Rural,Traditional,11,Inaccurate,4
+147,55,Female,Urban,Traditional,10,Accurate,3
+148,59,Female,Rural,ML Model,10,Inaccurate,3
+149,68,Female,Urban,ML Model,7,Inaccurate,4
+150,38,Male,Urban,Traditional,9,Accurate,5
+151,65,Male,Urban,ML Model,8,Accurate,3
+152,33,Male,Urban,Traditional,6,Accurate,5
+153,44,Female,Rural,ML Model,10,Accurate,2
+154,56,Female,Urban,Traditional,2,Inaccurate,3
+155,33,Male,Rural,ML Model,1,Accurate,4
+156,51,Male,Urban,ML Model,1,Inaccurate,5
+157,27,Male,Urban,Traditional,12,Accurate,2
+158,28,Female,Urban,ML Model,6,Accurate,1
+159,69,Male,Urban,Traditional,7,Inaccurate,2
+160,39,Female,Urban,ML Model,4,Accurate,5
+161,57,Male,Rural,Traditional,7,Inaccurate,3
+162,29,Female,Urban,Traditional,14,Accurate,3
+163,28,Male,Rural,ML Model,12,Accurate,1
+164,36,Male,Rural,Traditional,12,Inaccurate,5
+165,47,Male,Urban,Traditional,2,Inaccurate,3
+166,38,Female,Urban,Traditional,8,Inaccurate,3
+167,36,Male,Urban,ML Model,8,Inaccurate,5
+168,41,Female,Rural,Traditional,11,Inaccurate,2
+169,49,Female,Urban,ML Model,1,Inaccurate,4
+170,54,Male,Urban,Traditional,8,Inaccurate,2
+171,46,Female,Urban,Traditional,7,Accurate,5
+172,50,Male,Urban,Traditional,1,Inaccurate,2
+173,41,Female,Urban,ML Model,5,Accurate,3
+174,44,Female,Urban,Traditional,3,Accurate,5
+175,58,Male,Urban,Traditional,8,Inaccurate,3
+176,65,Female,Urban,ML Model,6,Accurate,3
+177,57,Female,Urban,ML Model,3,Accurate,3
+178,61,Female,Urban,ML Model,9,Inaccurate,2
+179,31,Female,Rural,Traditional,11,Accurate,4
+180,46,Female,Rural,ML Model,6,Inaccurate,1
+181,56,Female,Rural,Traditional,7,Accurate,4
+182,38,Female,Urban,ML Model,7,Accurate,1
+183,32,Female,Urban,ML Model,5,Inaccurate,5
+184,49,Female,Rural,ML Model,2,Accurate,4
+185,40,Male,Urban,ML Model,6,Accurate,1
+186,66,Female,Rural,ML Model,12,Inaccurate,3
+187,43,Male,Urban,Traditional,5,Inaccurate,5
+188,65,Male,Rural,Traditional,6,Accurate,4
+189,40,Female,Urban,ML Model,6,Accurate,2
+190,36,Male,Urban,Traditional,7,Inaccurate,5
+191,63,Male,Rural,ML Model,4,Accurate,3
+192,54,Male,Urban,Traditional,9,Inaccurate,3
+193,26,Female,Rural,Traditional,2,Inaccurate,3
+194,56,Female,Urban,ML Model,5,Accurate,1
+195,69,Male,Urban,ML Model,3,Inaccurate,4
+196,49,Male,Urban,Traditional,10,Inaccurate,5
+197,49,Male,Urban,Traditional,8,Accurate,4
+198,28,Male,Rural,Traditional,5,Inaccurate,4
+199,43,Female,Urban,ML Model,2,Accurate,1
+200,28,Male,Urban,ML Model,9,Accurate,1
