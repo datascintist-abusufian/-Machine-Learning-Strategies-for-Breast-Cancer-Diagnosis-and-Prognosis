@@ -1,0 +1,355 @@
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("ropls")
+
+```{r}
+library(ropls)
+data <- read.csv('/Users/mdabusufian/Downloads/updated_cancer_data_1.csv')
+
+
+
+
+```
+
+```{r}
+library(ropls)
+data <- read.csv('/Users/mdabusufian/Downloads/updated_cancer_data_1.csv')
+
+# Display the column names
+colnames(data)
+
+```
+```{r}
+# Split the data based on the 'diagnosis' column
+data_malignant <- data[data$diagnosis == "M",]
+data_benign <- data[data$diagnosis == "B",]
+
+# Perform a t-test to compare 'radius_mean' between the two groups
+t_test_results <- t.test(data_malignant$radius_mean, data_benign$radius_mean)
+
+# Extract the p-value from the test results
+p_value <- t_test_results$p.value
+p_value
+```
+```{r}
+# Calculate the mean 'radius_mean' for each group
+mean_radius_malignant <- mean(data_malignant$radius_mean, na.rm = TRUE)
+mean_radius_benign <- mean(data_benign$radius_mean, na.rm = TRUE)
+
+# Calculate the log2 fold change
+log2FoldChange <- log2(mean_radius_malignant / mean_radius_benign)
+log2FoldChange
+```
+```{r}
+unique(data$diagnosis)
+```
+```{r}
+# Split the data based on the group
+data_cancer <- data[data$diagnosis == 'M',]
+data_control <- data[data$diagnosis == 'B',]
+data_control 
+```
+```{r}
+# Calculate the mean 'radius_mean' for each group
+mean_radius_cancer <- mean(data_cancer$radius_mean, na.rm = TRUE)
+mean_radius_control <- mean(data_control$radius_mean, na.rm = TRUE)
+
+# Calculate the log2 fold change
+log2FoldChange <- log2(mean_radius_cancer / mean_radius_control)
+
+# Perform a t-test to get the p-value
+p_value <- t.test(data_cancer$radius_mean, data_control$radius_mean)$p.value
+log2FoldChange 
+p_value 
+```
+```{r}
+# Get the names of the numeric columns
+numeric_columns <- names(data)[sapply(data, is.numeric)]
+numeric_columns <- setdiff(numeric_columns, c('id'))  # Exclude 'id'
+
+# Initialize a data frame to store the results
+results <- data.frame(
+  Feature = numeric_columns,
+  log2FoldChange = rep(NA, length(numeric_columns)),
+  PValue = rep(NA, length(numeric_columns))
+)
+
+# Calculate the log2 fold changes and p-values for each feature
+for (i in seq_along(numeric_columns)) {
+  feature <- numeric_columns[i]
+  
+  # Calculate the mean feature value for each group
+  mean_cancer <- mean(data_cancer[[feature]], na.rm = TRUE)
+  mean_control <- mean(data_control[[feature]], na.rm = TRUE)
+  
+  # Calculate the log2 fold change
+  results[i, 'log2FoldChange'] <- log2(mean_cancer / mean_control)
+  
+  # Perform a t-test to get the p-value
+  results[i, 'PValue'] <- t.test(data_cancer[[feature]], data_control[[feature]])$p.value
+}
+
+# Add a column to the results to indicate significance
+results$Significance <- results$PValue < 0.05
+
+# View the results
+print(results)
+```
+```{r}
+# Convert p-values to -log10 scale
+results$PValue <- -log10(results$PValue)
+
+# Create the volcano plot using ggplot2
+library(ggplot2)
+ggplot(results, aes(x = log2FoldChange, y = PValue, color = Significance)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = 'Log2 Fold Change', y = '-Log10 p-value') +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed")
+```
+```{r}
+# Count the number of significant and non-significant features
+num_significant <- sum(results$Significance)
+num_non_significant <- nrow(results) - num_significant
+
+# Create the volcano plot
+plot <- ggplot(results, aes(x = log2FoldChange, y = PValue, color = Significance)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = 'Log2 Fold Change', y = '-Log10 p-value') +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed")
+
+# Add text annotations to the plot
+plot <- plot +
+  annotate("text", x = min(results$log2FoldChange), y = max(results$PValue), 
+           label = paste("Significant: ", num_significant), hjust = 0, vjust = 1, size = 3) +
+  annotate("text", x = max(results$log2FoldChange), y = max(results$PValue), 
+           label = paste("Non-significant: ", num_non_significant), hjust = 1, vjust = 1, size = 3)
+
+# Display the plot
+print(plot)
+```
+
+```{r}
+response <- as.factor(data$diagnosis)
+features <- data[, -which(names(data) %in% c('id', 'diagnosis'))]
+features
+
+```
+
+```{r}
+oplsda <- opls(features, response, predI = 1, orthoI = 0)
+oplsda
+```
+
+
+
+#Discovery phase-2-OPLS-DA
+
+```{r}
+# Load the required library
+library(FactoMineR)
+# Read the data
+data2 <- read.csv('/Users/mdabusufian/Downloads/synthetic_cancer_data.csv')
+
+
+# Remove the 'diagnosis' column
+data2_numeric <- data2[, !(names(data2) %in% "diagnosis")]
+
+# Perform PCA
+res.pca <- PCA(data2_numeric, scale.unit=TRUE, graph=FALSE)
+
+# Plot the results
+plot(res.pca, choix="ind")
+```
+# OPLSA Discovery phase-2
+```{r}
+library(ropls)
+library(pls)
+
+
+# Load data
+data2 <- read.csv('/Users/mdabusufian/Downloads/synthetic_cancer_data.csv')
+
+# Convert diagnosis to binary
+data2$diagnosis <- ifelse(data2$diagnosis == 'B', 0, 1)
+
+# Separate predictors and response
+response <- data2$diagnosis
+predictors <- data2[, !names(data2) %in% 'diagnosis']
+
+
+# Convert predictors to a data frame
+predictors_df <- as.data.frame(predictors_df)
+
+# Create a pls model
+pls_model <- plsr(response ~ ., data = predictors_df)
+
+
+# Print summary
+summary(pls_model)
+
+```
+
+```{r}
+oplsda <- opls(features, response, predI = 1, orthoI = 0)
+```
+
+
+```{r}
+plsda
+```
+
+#Volcano Analysis by plot
+```{r}
+str(data2)
+```
+
+```{r}
+# Read the data
+data2 <- read.csv('/Users/mdabusufian/Downloads/synthetic_cancer_data.csv')
+
+# Split the data into two groups based on the 'diagnosis' column
+data_cancer <- data2[data2$diagnosis == "M",]
+data_control <- data2[data2$diagnosis == "B",]
+
+# Get the names of the numeric columns
+numeric_columns <- names(data2)[sapply(data2, is.numeric)]
+numeric_columns <- setdiff(numeric_columns, c('id'))  # Exclude 'id'
+
+# Initialize a data frame to store the results
+results <- data.frame(
+  Feature = numeric_columns,
+  log2FoldChange = rep(NA, length(numeric_columns)),
+  PValue = rep(NA, length(numeric_columns))
+)
+
+# Calculate the log2 fold changes and p-values for each feature
+for (i in seq_along(numeric_columns)) {
+  feature <- numeric_columns[i]
+  
+  # Calculate the mean feature value for each group
+  mean_cancer <- mean(data_cancer[[feature]], na.rm = TRUE)
+  mean_control <- mean(data_control[[feature]], na.rm = TRUE)
+  
+  # Calculate the log2 fold change
+  results[i, 'log2FoldChange'] <- log2(mean_cancer / mean_control)
+  
+  # Perform a t-test to get the p-value
+  results[i, 'PValue'] <- t.test(data_cancer[[feature]], data_control[[feature]])$p.value
+}
+
+# Add a column to the results to indicate significance
+results$Significance <- results$PValue < 0.05
+
+# View the results
+print(results)
+```
+```{r}
+# Count the number of significant and non-significant features
+num_significant <- sum(results$Significance)
+num_non_significant <- nrow(results) - num_significant
+
+# Create the volcano plot
+plot <- ggplot(results, aes(x = log2FoldChange, y = -log10(PValue), color = Significance)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = 'Log2 Fold Change', y = '-Log10 p-value') +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed")
+
+# Add text annotations to the plot
+plot <- plot +
+  annotate("text", x = min(results$log2FoldChange) + .7, y = max(-log10(results$PValue)), 
+           label = paste("Significant: ", num_significant), hjust = 0, vjust = 1, size = 3) +
+  annotate("text", x = max(results$log2FoldChange) - .7, y = max(-log10(results$PValue)), 
+           label = paste("Non-significant: ", num_non_significant), hjust = 1, vjust = 1, size = 3)
+
+# Display the plot
+print(plot)
+```
+```{r}
+# Install the devtools package if it's not already installed
+if (!"devtools" %in% installed.packages()) {
+  install.packages("devtools")
+}
+
+# Load the devtools package
+library(devtools)
+
+# Install mixOmics from GitHub
+devtools::install_github("mixOmicsTeam/mixOmics")
+
+# Load the mixOmics package
+library(mixOmics)
+```
+```{r}
+data2 <- read.csv('/Users/mdabusufian/Downloads/synthetic_cancer_data.csv')
+# Remove columns with NULL or NA values
+data2 <- data2[, !apply(is.na(data2), 2, any)]
+```
+
+```{r}
+# Prepare the data
+X <- as.matrix(data2[, -which(names(data2) %in% "diagnosis")])  # predictors
+Y <- as.factor(data2$diagnosis)  # response
+
+# Check that X and Y are not empty
+if (nrow(X) == 0 || ncol(X) == 0) {
+  stop("Predictor matrix X is empty")
+}
+if (length(Y) == 0) {
+  stop("Response vector Y is empty")
+}
+
+# Perform PLS-DA
+plsda <- plsda(X, Y, ncomp = 2)
+summary(plsda)
+```
+```{r}
+# Assuming the cancer_data_2.csv file is in the current working directory
+data3 <- read.csv("/Users/mdabusufian/Downloads/Springer/Final_Breast Cancer-paper/dataset/cancer_data_2.csv")
+
+# Assuming you have a data frame called 'data' with 4024 rows
+# And you want to create a new column called 'Significance' with FALSE as default value
+data3 $Significance <- rep(FALSE, nrow(data3 )
+
+
+# Ensure that 'Significance' is a logical vector and 'log2FoldChange' and 'PValue' are numeric
+results$Significance <- as.logical(results$Significance)
+results$log2FoldChange <- as.numeric(results$log2FoldChange)
+results$PValue <- as.numeric(results$PValue)
+
+# Count the number of significant and non-significant features
+num_significant <- sum(results$Significance)
+num_non_significant <- nrow(results) - num_significant
+
+# Load necessary library
+library(ggplot2)
+
+# Create the volcano plot
+plot <- ggplot(results, aes(x = log2FoldChange, y = -log10(PValue), color = Significance)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = 'Log2 Fold Change', y = '-Log10 p-value') +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed")
+
+# Add text annotations to the plot
+plot <- plot +
+  annotate("text", x = min(results$log2FoldChange) + .7, y = max(-log10(results$PValue)), 
+           label = paste("Significant: ", num_significant), hjust = 0, vjust = 1, size = 3) +
+  annotate("text", x = max(results$log2FoldChange) - .7, y = max(-log10(results$PValue)), 
+           label = paste("Non-significant: ", num_non_significant), hjust = 1, vjust = 1, size = 3)
+
+# Display the plot
+print(plot)
+
+```
+
+
+
+
