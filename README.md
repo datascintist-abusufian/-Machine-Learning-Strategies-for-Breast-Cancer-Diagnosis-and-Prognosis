@@ -39,6 +39,8 @@ The notebooks run in Jupyter or Google Colab with a standard Python data-science
 
 The hospital cohort notebooks reference clinical trial data associated with Xi'an Jiaotong University. See the dataset documentation PDF in this repository for the description of variables and collection. Imaging datasets used for detection are not redistributed here.
 
+> **Data sharing.** `Hospital Trial_Data.csv` is shared with the permission of the data owners. It contains de-identified records only (a sequential study ID, age, gender, residence, diagnostic method and outcome) and no names, contact details or hospital record numbers.
+
 ## Disclaimer
 
 Research and educational use only. This is not a medical device and must not be used for clinical diagnosis or treatment decisions.
