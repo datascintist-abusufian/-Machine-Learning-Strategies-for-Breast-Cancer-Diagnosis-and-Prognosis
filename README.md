@@ -4,6 +4,16 @@ Detection and prognostic modelling for triple-negative breast cancer (TNBC). The
 
 This repository is part of a wider cancer imaging and medical imaging portfolio; see the [profile overview](https://github.com/datascintist-abusufian) for related work in dermoscopy, brain MRI and lung adenocarcinoma.
 
+## At a glance
+
+![Breast ultrasound examples and YOLOv8 validation accuracy](docs/figures/overview.png)
+
+**Figure 1.** Example breast ultrasound images from the three classes, and validation accuracy of the YOLOv8 classifier over 10 training epochs. Output of `Yolov_model_demonstration_sufi.ipynb`.
+
+| Model | Task | Train images | Validation images | Top-1 accuracy (validation) |
+| :--- | :--- | :---: | :---: | :---: |
+| YOLOv8n-cls (1.4 M parameters, 64 × 64 input) | Benign / malignant / normal | 1,448 | 130 | **82.3%** |
+
 ## Contents
 
 ### Detection on imaging data
